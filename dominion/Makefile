@@ -38,5 +38,9 @@ all: playdom player testDrawCard testBuyCard badTestDrawCard
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
 
-unitTests: unittest1.c
+unitTests: unittest1.c unittest2.c unittest3.c unittest4.c dominion.o rngs.o
 	gcc -o unitTest1 unittest1.c -g dominion.o rngs.o $(CFLAGS)
+	gcc -o unitTest2 unittest2.c -g dominion.o rngs.o $(CFLAGS)
+	gcc -o unitTest3 unittest3.c -g dominion.o rngs.o $(CFLAGS)
+	gcc -o unitTest4 unittest4.c -g dominion.o rngs.o $(CFLAGS)
+
