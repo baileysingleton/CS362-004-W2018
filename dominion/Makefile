@@ -36,11 +36,48 @@ player: player.c interface.o
 all: playdom player testDrawCard testBuyCard badTestDrawCard
 
 clean:
-	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
+	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe unitTest* cardTest*
 
-unitTests: unittest1.c unittest2.c unittest3.c unittest4.c dominion.o rngs.o
+unitTest1: unittest1.c dominion.o rngs.o
 	gcc -o unitTest1 unittest1.c -g dominion.o rngs.o $(CFLAGS)
+unitTest2: unittest2.c dominion.o rngs.o
 	gcc -o unitTest2 unittest2.c -g dominion.o rngs.o $(CFLAGS)
+unitTest3: unittest3.c dominion.o rngs.o
 	gcc -o unitTest3 unittest3.c -g dominion.o rngs.o $(CFLAGS)
+unitTest4: unittest4.c dominion.o rngs.o
 	gcc -o unitTest4 unittest4.c -g dominion.o rngs.o $(CFLAGS)
 
+cardTest1: cardtest1.c dominion.o rngs.o
+	gcc -o cardTest1 cardtest1.c -g dominion.o rngs.o $(CFLAGS)
+cardTest2: cardtest2.c dominion.o rngs.o
+	gcc -o cardTest2 cardtest2.c -g dominion.o rngs.o $(CFLAGS)
+cardTest3: cardtest3.c dominion.o rngs.o
+	gcc -o cardTest3 cardtest3.c -g dominion.o rngs.o $(CFLAGS)
+cardTest4: cardtest4.c dominion.o rngs.o
+	gcc -o cardTest4 cardtest4.c -g dominion.o rngs.o $(CFLAGS)
+
+allUnitTests: clean cardTest1 cardTest2 cardTest3 cardTest4 unitTest1 unitTest2 unitTest3 unitTest4
+	./unitTest1 >> unittestresult.out
+	gcov dominion.c >> unittestresult.out
+	cat dominion.c.gcov >> unittestresult.out
+	./unitTest2 >> unittestresult.out
+	gcov dominion.c >> unittestresult.out
+	cat dominion.c.gcov >> unittestresult.out
+	./unitTest3 >> unittestresult.out
+	gcov dominion.c >> unittestresult.out
+	cat dominion.c.gcov >> unittestresult.out
+	./unitTest4 >> unittestresult.out
+	gcov dominion.c >> unittestresult.out
+	cat dominion.c.gcov >> unittestresult.out
+	./cardTest1 >> unittestresult.out
+	gcov dominion.c >> unittestresult.out
+	cat dominion.c.gcov >> unittestresult.out
+	./cardTest2 >> unittestresult.out
+	gcov dominion.c >> unittestresult.out
+	cat dominion.c.gcov >> unittestresult.out
+	./cardTest3 >> unittestresult.out
+	gcov dominion.c >> unittestresult.out
+	cat dominion.c.gcov >> unittestresult.out
+	./cardTest4 >> unittestresult.out
+	gcov dominion.c >> unittestresult.out
+	cat dominion.c.gcov >> unittestresult.out

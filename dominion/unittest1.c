@@ -23,12 +23,14 @@ int main () {
     G.supplyCount[0] = 0;
     G.supplyCount[1] = 0;
     G.supplyCount[2] = 0;
+	
+    printf("TEST 1: SUPPLY COUNT TEST\n");
     
     printf("TEST: Checking if 3 piles are empty the game ends...\n");
 
     endGame = isGameOver(&G);
     if(endGame == 1)
-        printf("PASSED: Game Ended As Expected!");
+        printf("PASSED: Game Ended As Expected!\n");
     else
         printf("FAILED: Game did not end as expected!\n");
 	       

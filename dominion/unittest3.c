@@ -21,7 +21,7 @@ int main () {
 
 	G.supplyCount[1] = 5;
 	for(i = 0; i < 1000; i ++){
-		randNum = rand() % 500;
+		randNum = i;
 		card = rand () % 10;
 		G.supplyCount[card] = randNum;
 		printf("TEST: There should be %d number of card %d in the deck...\n", randNum, card);

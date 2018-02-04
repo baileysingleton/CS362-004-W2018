@@ -2,12 +2,10 @@
 #include <stdio.h>
 #include <assert.h>
 #include "dominion_helpers.h"
-#include <time.h>
 #include "rngs.h"
 #include <stdlib.h>
 
 int main () {
-	srand(time(NULL));
     struct gameState G;
 	int k[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse, sea_hag, tribute, smithy};
 	int handCount;
@@ -20,7 +18,7 @@ int main () {
 	printf("TEST 3: TESTING NUM HAND CARDS FUNCTION.");
 
 	for(i = 0; i < 1000; i ++){
-		randNum = rand() % 500;
+		randNum = i;
 		G.handCount[0] = randNum;
 		printf("TEST: The hand size of player 0 should be of size %d...\n",randNum);
 		handCount = numHandCards(&G);
@@ -33,7 +31,7 @@ int main () {
 	}
 	G.whoseTurn++;
 	for(i = 0; i < 1000; i ++){
-		randNum = rand() % 500;
+		randNum = i;
 		G.handCount[1] = randNum;
 		printf("TEST: The hand size of player 1 should be of size %d...\n",randNum);
 		handCount = numHandCards(&G);
