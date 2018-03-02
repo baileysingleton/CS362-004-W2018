@@ -1,0 +1,7 @@
+BUG 1 
+	The first bug I found in my teammate's code was in the supply count function. This test should check every single supply pile, and if 3 of them are empty the game should end. All supply piles are checked, except for the last one. The code is written so that the for loop stops one early in the function isGameOver(). The end condition in the loop should be i < 26, not i < 25. Therefore, the last pile will never be checked, and the game would not end if the last supply pile was empty. 
+
+BUG 2 
+	The second bug appeared in the getCardEffect function. I was playing dominion until I noticed that playing cards kept spititng back the fact the card was too expensive. I thought that was odd, even with enough money. Then, I dug into the code, and searched for that print statement. It didn't take me long to figure out that the less than sign, had been flipped to a greater than sign, in the statement: 
+	else if(state->coins > getCost(choice1){...
+	This would make it so that the function would always print this out, if you had more money than you needed. This would also make it, that this would never happen if you didn't have enough money. 
